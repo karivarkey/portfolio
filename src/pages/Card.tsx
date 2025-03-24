@@ -3,6 +3,7 @@ import Me from "./../assets/svg/Card/me.svg";
 import AnimatedText from "../components/AnimatedText/AnimatedText";
 import CardData from "../components/BusinessCard/CardData";
 import { useState } from "react";
+import { Download } from "lucide-react";
 
 const Card = () => {
   const [menu, setMenu] = useState<"About" | "Bio" | "Contact">("About");
@@ -26,7 +27,16 @@ const Card = () => {
           <div className="text-lg font-semibold mt-2">Geevarghese Regi</div>
           <AnimatedText />
 
-          {/* Menu Section - Takes 3/4 of the width */}
+          {/* Download Resume Button */}
+          <a
+            href="/resume.pdf"
+            download="Geevarghese_Resume.pdf"
+            className="mt-4 flex items-center gap-2 bg-gradient-to-r from-blue-500 to-indigo-600 text-white px-6 py-2 rounded-lg shadow-md hover:scale-105 transition-transform"
+          >
+            <Download className="w-5 h-5" /> Download Resume
+          </a>
+
+          {/* Menu Section */}
           <div className="w-3/4 mt-6">
             <div className="relative flex justify-between items-center">
               {["About", "Bio", "Contact"].map((item) => (
