@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import Card from "./pages/Card";
 import Home from "./pages/Home";
 import Header from "./components/Header/Header";
+import About from "./pages/About";
 const App = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
@@ -20,6 +21,7 @@ const App = () => {
       {!isMobile && <Header />}
       <Routes>
         <Route path="/" element={isMobile ? <Card /> : <Home />} />
+        <Route path="/about" element={<About />} />
       </Routes>
     </BrowserRouter>
   );

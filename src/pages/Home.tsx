@@ -56,6 +56,7 @@ const Home = () => {
             style={{
               animation: "fadeInUp 0.8s ease-out",
             }}
+            onClick={() => window.open("/about", "_self")} // Redirect to About Page
           >
             Learn More About Me
           </button>
