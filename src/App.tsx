@@ -4,6 +4,7 @@ import Card from "./pages/Card";
 import Home from "./pages/Home";
 import Header from "./components/Header/Header";
 import About from "./pages/About";
+import Contact from "./pages/Contact";
 const App = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
@@ -22,6 +23,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={isMobile ? <Card /> : <Home />} />
         <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
       </Routes>
     </BrowserRouter>
   );
