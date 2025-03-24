@@ -31,7 +31,7 @@ const Home = () => {
     >
       {/* Left Section */}
       <div className="flex-1 p-4 font-bold text-2xl">
-        <div className="text-start w-1/2">
+        <div className="text-start ">
           <p className="font-semibold text-gray-900 text-2xl">
             {data.card.about.text.split("\n").map((line, index) => (
               <span key={index} className="block">
@@ -48,18 +48,37 @@ const Home = () => {
             ))}
           </p>
 
-          {/* Animated Button */}
-          <button
-            className="mt-6 px-6 py-3 text-lg font-semibold text-white bg-black rounded-full shadow-lg
-              backdrop-blur-lg transition-all duration-500 ease-in-out transform
-              hover:scale-105 hover:bg-gray-800 active:scale-95"
-            style={{
-              animation: "fadeInUp 0.8s ease-out",
-            }}
-            onClick={() => window.open("/about", "_self")} // Redirect to About Page
-          >
-            Learn More About Me
-          </button>
+          {/* Buttons Container - Side by Side */}
+          <div className="flex gap-4 mt-6">
+            {/* Learn More Button */}
+            <button
+              className="px-6 py-3 text-lg font-semibold text-white bg-black rounded-full shadow-lg
+                backdrop-blur-lg transition-all duration-500 ease-in-out transform
+                hover:scale-105 hover:bg-gray-800 active:scale-95"
+              style={{
+                animation: "fadeInUp 0.8s ease-out",
+              }}
+              onClick={() => window.open("/about", "_self")} // Redirect to About Page
+            >
+              Learn More About Me
+            </button>
+
+            {/* Download Resume Button */}
+            <a
+              href="/resume.pdf"
+              download="Geevarghese_Resume.pdf"
+              className="relative px-6 py-3 text-lg font-semibold uppercase border-2 border-black text-black 
+                rounded-full overflow-hidden transition-all duration-500 hover:text-white hover:border-white
+                before:absolute before:top-0 before:left-0 before:w-full before:h-full before:bg-black
+                before:scale-x-0 before:origin-left before:transition-transform before:duration-500
+                hover:before:scale-x-100"
+              style={{
+                animation: "fadeInUp 1s ease-out",
+              }}
+            >
+              <span className="relative z-10">Download Resume</span>
+            </a>
+          </div>
         </div>
       </div>
 
