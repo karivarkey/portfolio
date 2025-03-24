@@ -10,7 +10,7 @@
     ],
     "card": {
         "about":{
-            "text":"Hey! I'm Geevarghese,\n A very “Techy” person.\nI love building beautiful applications in the web and mobile space.",
+            "text":"👋 Hey! I'm Geevarghese,\n A very “Techy” person.\nI love building beautiful applications in the web and mobile space.",
             "subText":"I use React Native , React and Firebase with Express to get my things done"
         },
         "bio":{
