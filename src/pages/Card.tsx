@@ -1,10 +1,16 @@
 import Background from "./../assets/svg/Card/gradient.svg";
 import Me from "./../assets/svg/Card/me.svg";
 import AnimatedText from "../components/AnimatedText/AnimatedText";
+import CardData from "../components/BusinessCard/CardData";
+import { useState } from "react";
+
 const Card = () => {
+  const [menu, setMenu] = useState<"About" | "Bio" | "Contact">("About");
+
   return (
     <div className="flex flex-col items-center justify-center h-screen bg-[#EEEEEE]">
-      <div className="relative flex items-center justify-center w-5/6 rounded-t-3xl p-6 text-black font-semibold overflow-hidden">
+      {/* Card Container */}
+      <div className="relative flex flex-col w-5/6 rounded-t-3xl px-6 pt-6 text-black font-semibold overflow-hidden">
         {/* Background Layer */}
         <div
           className="absolute inset-0 bg-[conic-gradient(white_0deg_10deg,green_80deg_120deg,white_130deg_140deg,pink_200deg_240deg,white_250deg_260deg,blue_300deg_360deg)] bg-cover bg-center"
@@ -12,22 +18,39 @@ const Card = () => {
         ></div>
 
         {/* Content Layer */}
-        <div className="relative z-10 text-center">
-          {/* Avatar */}
-          <div className="bg-white rounded-xl ">
-            <div className="w-36 h-36 flex items-end justify-center">
-              <img src={Me} alt="Me" />
-            </div>
+        <div className="relative z-10 flex flex-col items-center justify-center">
+          {/* Avatar Section */}
+          <div className="bg-white rounded-xl p-2 w-40 h-40 flex items-center justify-center shadow-md">
+            <img src={Me} alt="Me" className="w-36 h-36" />
           </div>
-          <div className="flex flex-col">
-            <div className="font-semibold">Geevarghese Regi</div>
-            <div>
-              <AnimatedText />
+          <div className="text-lg font-semibold mt-2">Geevarghese Regi</div>
+          <AnimatedText />
+
+          {/* Menu Section - Takes 3/4 of the width */}
+          <div className="w-3/4 mt-6">
+            <div className="relative flex justify-between items-center">
+              {["About", "Bio", "Contact"].map((item) => (
+                <div
+                  key={item}
+                  className={`relative px-6 py-2 -bottom-1 cursor-pointer transition-all ${
+                    menu === item
+                      ? "bg-white shadow-md rounded-md text-black font-bold"
+                      : "text-gray-400"
+                  }`}
+                  onClick={() => setMenu(item as "About" | "Bio" | "Contact")}
+                >
+                  <span className="relative z-10">{item}</span>
+                </div>
+              ))}
             </div>
           </div>
         </div>
       </div>
-      <div className="bg-white w-5/6">OTHER STUFF</div>
+
+      {/* Bottom Section */}
+      <div className="bg-white w-5/6 flex items-center justify-center rounded-b-3xl py-6">
+        <CardData menu={menu} />
+      </div>
     </div>
   );
 };
