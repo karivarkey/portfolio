@@ -1,10 +1,9 @@
-import profilePic from "./../assets/svg/About/me_wave.svg"; // Add your profile image here
-import data from "./../../data.json";
+import profilePic from "./../assets/svg/About/me_wave.svg";
 
 const About = () => {
   return (
     <div
-      className="flex flex-col items-center justify-center  bg-gray-50 text-gray-900 p-6"
+      className="flex flex-col items-center justify-center bg-gray-50 text-gray-900 p-6"
       style={{ height: "calc(100vh - 80px)" }}
     >
       {/* Profile Card */}
@@ -20,24 +19,37 @@ const About = () => {
 
         {/* Right - Info Section */}
         <div className="flex-1 flex flex-col justify-center px-6 mt-6 md:mt-0">
-          <h1 className="text-3xl font-bold text-gray-900">{data.name}</h1>
+          <h1 className="text-3xl font-bold text-gray-900">
+            Geevarghese Regi 🚀
+          </h1>
+
           <p className="text-lg text-gray-600 mt-2">
-            {data.card.about.text.split("\n").map((line, index) => (
-              <span key={index} className="block">
-                {line}
-              </span>
-            ))}
+            Hey there! I'm <b>Geevarghese</b> (aka <b>Gee</b> or{" "}
+            <b>karivarkey</b>) 👋, a full-stack developer with a passion for
+            <b> building innovative apps</b> and <b>AI-driven projects</b>. I
+            love experimenting with <b>React, TypeScript, MongoDB</b>, and{" "}
+            <b>AI/ML models</b> 🤖. Always on a journey to{" "}
+            <b>learn, build, and break things to understand them better!</b> 🔥
           </p>
 
           <p className="text-md text-gray-500 mt-3">
-            {data.card.about.subText}
+            Currently working as a <b>Technical Developer @ AIDE DHS</b>
           </p>
 
           {/* Titles / Roles */}
           <div className="mt-4">
-            <h3 className="text-lg font-semibold text-gray-800">Roles:</h3>
+            <h3 className="text-lg font-semibold text-gray-800">
+              Roles & Skills 🎯
+            </h3>
             <div className="flex flex-wrap gap-2 mt-2">
-              {data.title.map((role, index) => (
+              {[
+                "Full-Stack Developer 🖥️",
+                "React Native & Expo Expert 📱",
+                "AI/ML Enthusiast 🤖",
+                "Firebase & Firestore Wizard 🔥",
+                "Linux & Arch User 🐧",
+                "Cloud & Backend Dev ☁️",
+              ].map((role, index) => (
                 <span
                   key={index}
                   className="px-3 py-1 bg-gray-200 text-gray-700 text-sm rounded-full"
@@ -51,23 +63,21 @@ const About = () => {
           {/* Bio Info */}
           <div className="mt-5 text-gray-700">
             <p>
-              <strong>🏢 Company:</strong> {data.card.bio.company}
+              <b>📍 Location:</b> India 🇮🇳
             </p>
             <p>
-              <strong>📍 Location:</strong> {data.card.bio.location}
+              <b>🎓 Education:</b> 3rd-year CSE undergrad 📚
             </p>
             <p>
-              <strong>🎓 Education:</strong> {data.card.bio.education}
+              <b>📜 Degree:</b> B.Tech in Computer Science & Engineering 💻
             </p>
             <p>
-              <strong>📜 Degree:</strong> {data.card.bio.degree}
+              <b>🎓 Graduation:</b> 2026 🎯
             </p>
             <p>
-              <strong>🎓 Graduation:</strong> {data.card.bio.graduation}
+              <b>🏢 Company:</b> Aide Digital Health Services, Canada 🌍
             </p>
           </div>
-
-          {/* Contact Links */}
         </div>
       </div>
     </div>
