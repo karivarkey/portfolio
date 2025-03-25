@@ -27,5 +27,37 @@
             "linkedIn":"geevarghese-regi-7b7b3b1b4",
             "instagram":"karivarkey"
         }
-    }
+    },
+    "projects":[
+        {
+            "name":"AIDE DHS",
+            "description":"Working on turning the startups idea into a reality",
+            "link":"http://aidedhs.ca/",
+            "image":"aide.png",
+            "date":{
+                "from":"December 2024",
+                "to":"Present"
+            }
+        },
+        {
+            "name":"RSET LABS",
+            "description":"A digital platform for the students of Rajagiri School of Engineering and Technology to subimt their Physics Lab reports for S1 & 2",
+            "link":"https://rsetlab.web.app/",
+            "image":"rset.png",
+            "date":{
+                "from":"January 2025",
+                "to":"April 2025 (expected)"
+            }
+        },
+        {
+            "name":"JY PROFESS MESSIAH",
+            "description":"A volutary project undertaken for JY Profess Messiah to build a cross platform mobile application for their events",
+            "link":"https://professmessiah.com/",
+            "image":"jy.png",
+            "date":{
+                "from":"December 2024",
+                "to":"Present"
+            }
+        }
+    ]
 }

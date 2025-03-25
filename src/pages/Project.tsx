@@ -1,63 +1,70 @@
-import { useEffect, useState } from "react";
-import { FaGithub, FaExternalLinkAlt, FaHammer } from "react-icons/fa";
+import { useEffect } from "react";
+import { motion } from "framer-motion";
+import ProjectCard from "../components/Project/ProjectCard";
+import { projects } from "./../../data.json";
+
+const fadeIn = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
+};
 
 const Projects = () => {
-  const [animate, setAnimate] = useState(false);
-
   useEffect(() => {
-    setAnimate(true);
+    document.body.style.overflowX = "hidden";
   }, []);
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen bg-gray-50 text-gray-900 p-6 relative overflow-hidden">
-      {/* Heading */}
-      <h1
-        className={`text-4xl font-bold mt-8 mb-4 opacity-0 transition-all duration-1000 delay-200 ${
-          animate ? "opacity-100" : ""
-        }`}
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 1 }}
+      className="flex flex-col items-center justify-center bg-white text-black p-6 relative overflow-hidden"
+    >
+      <motion.h1
+        variants={fadeIn}
+        initial="hidden"
+        animate="visible"
+        className="font-bold text-4xl text-center"
       >
-        🚧 Projects Page Coming Soon!
-      </h1>
-      <p
-        className={`text-gray-600 text-lg text-center max-w-xl mb-6 opacity-0 transition-all duration-1000 delay-400 ${
-          animate ? "opacity-100" : ""
-        }`}
-      >
-        I'm still working on setting up this page. In the meantime, you can
-        check out my projects on GitHub! 🔥
-      </p>
+        I have worked on numerous projects! Here are some noteworthy ones
+      </motion.h1>
 
-      {/* GitHub Link */}
-      <a
-        href="https://github.com/karivarkey" // Change to your actual GitHub URL
-        target="_blank"
-        rel="noopener noreferrer"
-        className="flex items-center gap-3 bg-gray-900 text-white px-6 py-3 rounded-full text-lg font-semibold transition-all duration-300 hover:bg-gray-700 opacity-0 translate-y-4 transition-all duration-1000 delay-600"
-        style={{
-          opacity: animate ? 1 : 0,
-          transform: animate ? "translateY(0)" : "translateY(10px)",
-        }}
+      <motion.div
+        variants={fadeIn}
+        initial="hidden"
+        animate="visible"
+        className="w-full flex flex-wrap justify-center gap-6 mt-10 border border-black p-6 rounded-3xl bg-gradient-to-br from-gray-50 to-gray-200 shadow-2xl"
       >
-        <FaGithub className="text-2xl" />
-        Visit My GitHub <FaExternalLinkAlt />
-      </a>
+        <motion.h1
+          variants={fadeIn}
+          className="font-bold text-start text-2xl w-full border-b border-black pb-2"
+        >
+          Current Projects / Gigs
+        </motion.h1>
+        <motion.div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+          {projects.map((project, index) => (
+            <ProjectCard key={index} project={project} />
+          ))}
+        </motion.div>
+      </motion.div>
 
-      {/* Animated Background Elements */}
-      <div className="absolute inset-0 pointer-events-none ">
-        <div className="absolute w-[200px] h-[200px] bg-yellow-300 opacity-20 rounded-full blur-3xl top-20 left-10 animate-pulse" />
-        <div className="absolute w-[300px] h-[300px] bg-blue-300 opacity-20 rounded-full blur-3xl bottom-20 right-10 animate-pulse" />
-      </div>
-
-      {/* Icons for fun */}
-      <div
-        className={`mt-6 flex gap-6 opacity-0 transition-all duration-1000 delay-800 ${
-          animate ? "opacity-100" : ""
-        }`}
-      >
-        <FaHammer className="text-4xl text-yellow-500 animate-bounce" />
-        <FaGithub className="text-4xl text-black animate-pulse" />
-      </div>
-    </div>
+      <motion.div variants={fadeIn} className="w-full mt-10 text-center">
+        <motion.h1
+          variants={fadeIn}
+          className="font-bold text-xl border-b border-black pb-2"
+        >
+          If you prefer to check my GitHub
+        </motion.h1>
+        <motion.a
+          href="https://github.com/karivarkey"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-block mt-4 px-6 py-3 text-lg font-semibold bg-black text-white rounded-full shadow-lg transition-all duration-500 hover:bg-gray-900 hover:scale-105"
+        >
+          Visit My GitHub
+        </motion.a>
+      </motion.div>
+    </motion.div>
   );
 };
 
