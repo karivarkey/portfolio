@@ -5,13 +5,14 @@ import data from "./../../data.json";
 const Home = () => {
   const [animateImage, setAnimateImage] = useState(false);
   const [tilt, setTilt] = useState({ x: 0, y: 0 });
+  const [imageLoaded, setImageLoaded] = useState(false);
 
   useEffect(() => {
     setTimeout(() => setAnimateImage(true), 300); // Delayed for smooth fade-in
   }, []);
 
   // Handle Mouse Movement for 3D Parallax Effect
-  const handleMouseMove = (e: React.MouseEvent) => {
+  const handleMouseMove = (e: any) => {
     const { clientX, clientY } = e;
     const centerX = window.innerWidth / 2;
     const centerY = window.innerHeight / 2;
@@ -55,9 +56,7 @@ const Home = () => {
               className="px-6 py-3 text-lg font-semibold text-white bg-black rounded-full shadow-lg
                 backdrop-blur-lg transition-all duration-500 ease-in-out transform
                 hover:scale-105 hover:bg-gray-800 active:scale-95"
-              style={{
-                animation: "fadeInUp 0.8s ease-out",
-              }}
+              style={{ animation: "fadeInUp 0.8s ease-out" }}
               onClick={() => window.open("/about", "_self")} // Redirect to About Page
             >
               Learn More About Me
@@ -72,9 +71,7 @@ const Home = () => {
                 before:absolute before:top-0 before:left-0 before:w-full before:h-full before:bg-black
                 before:scale-x-0 before:origin-left before:transition-transform before:duration-500
                 hover:before:scale-x-100"
-              style={{
-                animation: "fadeInUp 1s ease-out",
-              }}
+              style={{ animation: "fadeInUp 1s ease-out" }}
             >
               <span className="relative z-10">Download Resume</span>
             </a>
@@ -83,11 +80,19 @@ const Home = () => {
       </div>
 
       {/* Right Section - Image with Fade, Scale & 3D Parallax */}
-      <div className="flex justify-end flex-1">
+      <div className="flex justify-end flex-1 relative">
+        {!imageLoaded && (
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="w-16 h-16 border-4 border-gray-300 border-t-black rounded-full animate-spin"></div>
+          </div>
+        )}
         <img
           src={bg}
           alt="bg"
-          className="max-w-full h-auto transition-transform duration-1000 ease-out"
+          className={`max-w-full h-auto transition-transform duration-1000 ease-out ${
+            imageLoaded ? "block" : "hidden"
+          }`}
+          onLoad={() => setImageLoaded(true)}
           style={{
             opacity: animateImage ? 1 : 0,
             transform: `perspective(1000px) scale(${animateImage ? 1 : 0.75}) 
