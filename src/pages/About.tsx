@@ -33,7 +33,8 @@ const About = () => {
           </p>
 
           <p className="text-md text-gray-500 mt-3">
-            Currently working as a <b>Technical Developer @ AIDE DHS</b>
+            Currently working as a{" "}
+            <b>Freelance Technical Developer @ AIDE DHS</b>
           </p>
 
           {/* Titles / Roles */}
@@ -75,7 +76,7 @@ const About = () => {
               <b>🎓 Graduation:</b> 2026 🎯
             </p>
             <p>
-              <b>🏢 Company:</b> Aide Digital Health Services, Canada 🌍
+              <b>🏢 Company:</b> Freelancer 🌍
             </p>
           </div>
         </div>
