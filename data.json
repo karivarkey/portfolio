@@ -1,63 +1,97 @@
 {
-    "name":"Geevarghese Regi",
-    "title":[
-        "DevOps Engineer",
-        "Web Developer",
-        "React Developer",
-        "Full Stack Developer",
-        "React Native",
-        "Firebase Developer"
-    ],
-    "card": {
-        "about":{
-            "text":"👋 Hey! I'm Geevarghese,\n A very “Techy” person.\nI love building beautiful applications in the web and mobile space.",
-            "subText":"I use React Native , React and Firebase with Express to get my things done"
-        },
-        "bio":{
-            "company":"Aide DHS,Canada",
-            "location":"Remote",
-            "education":"Rajagiri School of Engineering and Technology",
-            "degree":"B.Tech in Computer Science and Engineering",
-            "graduation":"2026"
-
-        },
-        "contact":{
-            "email":"geevargheseregi78@gmail.com",
-            "github":"karivarkey",
-            "linkedIn":"geevarghese-regi-7b7b3b1b4",
-            "instagram":"karivarkey"
-        }
+  "name": "Geevarghese Regi",
+  "title": [
+    "DevOps Engineer",
+    "Web Developer",
+    "React Developer",
+    "Full Stack Developer",
+    "React Native",
+    "Firebase Developer"
+  ],
+  "card": {
+    "about": {
+      "text": "👋 Hey! I'm Geevarghese,\n A very “Techy” person.\nI love building beautiful applications in the web and mobile space.",
+      "subText": "I use React Native , React and Firebase with Express to get my things done"
     },
-    "projects":[
-        {
-            "name":"AIDE DHS",
-            "description":"Working on turning the startups idea into a reality",
-            "link":"http://aidedhs.ca/",
-            "image":"aide.png",
-            "date":{
-                "from":"December 2024",
-                "to":"Present"
-            }
-        },
-        {
-            "name":"RSET LABS",
-            "description":"A digital platform for the students of Rajagiri School of Engineering and Technology to subimt their Physics Lab reports for S1 & 2",
-            "link":"https://rsetlab.web.app/",
-            "image":"rset.png",
-            "date":{
-                "from":"January 2025",
-                "to":"April 2025 (expected)"
-            }
-        },
-        {
-            "name":"JY PROFESS MESSIAH",
-            "description":"A volutary project undertaken for JY Profess Messiah to build a cross platform mobile application for their events",
-            "link":"https://professmessiah.com/",
-            "image":"jy.png",
-            "date":{
-                "from":"December 2024",
-                "to":"Present"
-            }
-        }
-    ]
+    "bio": {
+      "company": "Aide DHS,Canada",
+      "location": "Remote",
+      "education": "Rajagiri School of Engineering and Technology",
+      "degree": "B.Tech in Computer Science and Engineering",
+      "graduation": "2026"
+    },
+    "contact": {
+      "email": "geevargheseregi78@gmail.com",
+      "github": "karivarkey",
+      "linkedIn": "geevarghese-regi-7b7b3b1b4",
+      "instagram": "karivarkey"
+    }
+  },
+  "projects": [
+    {
+      "name": "AIDE DHS",
+      "description": "Working on turning the startups idea into a reality",
+      "link": "http://aidedhs.ca/",
+      "image": "aide.png",
+      "date": {
+        "from": "December 2024",
+        "to": "Present"
+      }
+    },
+    {
+      "name": "RSET LABS",
+      "description": "A digital platform for the students of Rajagiri School of Engineering and Technology to subimt their Physics Lab reports for S1 & 2",
+      "link": "https://rsetlab.web.app/",
+      "image": "rset.png",
+      "date": {
+        "from": "January 2025",
+        "to": "April 2025 (expected)"
+      }
+    },
+    {
+      "name": "JY PROFESS MESSIAH",
+      "description": "A volutary project undertaken for JY Profess Messiah to build a cross platform mobile application for their events",
+      "link": "https://professmessiah.com/",
+      "image": "jy.png",
+      "date": {
+        "from": "December 2024",
+        "to": "Present"
+      }
+    },
+    {
+      "name": "Kodmo - Meme based AI Tutor",
+      "description": "Kodomo is an AI powered teacher whcih will help you learn concepts easily by using dynamically generated memes",
+      "link": "https://kodomo-firebase.web.app",
+      "image": "kodomo.png"
+    },
+    {
+      "name": "zell.com (S6 mini project)",
+      "description": "A digital platform for local vendors and buyers to trade. Built using expo with iOS and NativeWind ",
+      "image": "zell.png"
+    }
+  ],
+  "companies": [
+    {
+      "name": "μLearn",
+      "role": "Front-End Intern",
+      "duration": {
+        "duration": "3 Mothns",
+        "from": "June 2024",
+        "to": "September 2024"
+      },
+      "technologies": ["React", "Tailwind"],
+      "website": "https://mulearn.org/"
+    },
+    {
+      "name": "Banzan Studios",
+      "role": "React-Native Intern",
+      "duration": {
+        "duration": "2 Mothns",
+        "from": "August 2024",
+        "to": "November 2024"
+      },
+      "technologies": ["React", "Tailwind", "React Native"],
+      "website": "https://banzan.co/"
+    }
+  ]
 }

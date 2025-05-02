@@ -4,9 +4,9 @@ type Props = {
   project: {
     name: string;
     description: string;
-    link: string;
+    link?: string;
     image: string;
-    date: {
+    date?: {
       from: string;
       to: string;
     };
@@ -15,49 +15,74 @@ type Props = {
 
 const ProjectCard = ({ project }: Props) => {
   return (
-    <motion.a
-      href={project.link}
-      target="_blank"
-      rel="noopener noreferrer"
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      whileHover={{ scale: 1.05, rotate: 1 }}
-      transition={{ duration: 0.5 }}
-      className="group relative w-full sm:w-80 flex flex-col items-center bg-white border border-black rounded-2xl p-6 shadow-xl overflow-hidden transition-all duration-300 hover:shadow-2xl"
+    <motion.div
+      whileHover="hover"
+      initial="rest"
+      animate="rest"
+      className="group relative w-full sm:w-80 bg-white border border-black rounded-2xl p-4 shadow-lg overflow-hidden transition-all duration-300"
     >
-      {/* Image Section */}
-      <motion.div
-        className="relative w-32 h-32 overflow-hidden rounded-xl bg-gray-100 flex items-center justify-center"
-        whileHover={{ scale: 1.1 }}
-      >
-        <img
-          src={"./Projects/" + project.image}
-          alt={project.name}
-          className="w-full h-full object-contain transition-transform duration-300 group-hover:rotate-3 group-hover:scale-105"
-        />
-      </motion.div>
+      {project.link ? (
+        <motion.a
+          href={project.link}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="block"
+        >
+          {/* Image Section */}
+          <div className="w-full h-48 bg-gray-100 rounded-xl overflow-hidden flex items-center justify-center">
+            <img
+              src={`./Projects/${project.image}`}
+              alt={project.name}
+              className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-105 group-hover:rotate-1"
+            />
+          </div>
 
-      {/* Text Content */}
-      <motion.div className="flex flex-col items-center text-center mt-4">
-        <h3 className="text-2xl font-bold tracking-wide transition-all duration-300 group-hover:text-gray-800">
-          {project.name}
-        </h3>
-        <p className="mt-2 text-sm text-gray-700 transition-all duration-300 group-hover:text-black">
-          {project.description}
-        </p>
+          {/* Title */}
+          <div className="mt-4 text-center">
+            <h3 className="text-xl font-bold text-gray-900">{project.name}</h3>
+          </div>
+        </motion.a>
+      ) : (
+        <div className="block cursor-default">
+          {/* Image Section */}
+          <div className="w-full h-48 bg-gray-100 rounded-xl overflow-hidden flex items-center justify-center">
+            <img
+              src={`./Projects/${project.image}`}
+              alt={project.name}
+              className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-105 group-hover:rotate-1"
+            />
+          </div>
 
-        {/* Date Section */}
-        <div className="mt-4 flex flex-col text-xs text-gray-500 transition-all duration-300 group-hover:text-black">
-          <span>From: {project.date.from}</span>
-          <span>Till: {project.date.to}</span>
+          {/* Title */}
+          <div className="mt-4 text-center">
+            <h3 className="text-xl font-bold text-gray-900">{project.name}</h3>
+          </div>
         </div>
+      )}
+
+      {/* Hover Details Overlay */}
+      <motion.div
+        variants={{
+          rest: { opacity: 0, y: 20 },
+          hover: { opacity: 1, y: 0 },
+        }}
+        transition={{ duration: 0.4 }}
+        className="absolute inset-0 bg-white/95 backdrop-blur-xl p-6 flex flex-col justify-center items-center text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+      >
+        <p className="text-sm text-gray-700">{project.description}</p>
+        {project.date && (
+          <div className="mt-4 text-xs text-gray-500">
+            <p>From: {project.date.from}</p>
+            <p>To: {project.date.to}</p>
+          </div>
+        )}
       </motion.div>
 
-      {/* Glowing Hover Effect */}
-      <motion.div className="absolute inset-0 -z-10 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
-        <div className="absolute inset-0 bg-gradient-to-r from-gray-200 via-white to-gray-200 blur-2xl"></div>
+      {/* Subtle Glow */}
+      <motion.div className="absolute inset-0 -z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+        <div className="absolute inset-0 bg-gradient-to-r from-gray-200 via-white to-gray-200 blur-2xl" />
       </motion.div>
-    </motion.a>
+    </motion.div>
   );
 };
 

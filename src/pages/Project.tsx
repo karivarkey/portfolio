@@ -1,7 +1,8 @@
 import { useEffect } from "react";
 import { motion } from "framer-motion";
 import ProjectCard from "../components/Project/ProjectCard";
-import { projects } from "./../../data.json";
+import CompanyCard from "../components/Project/CompanyCard";
+import { projects, companies } from "./../../data.json";
 
 const fadeIn = {
   hidden: { opacity: 0, y: 20 },
@@ -18,48 +19,66 @@ const Projects = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 1 }}
-      className="flex flex-col items-center justify-center bg-white text-black p-6 relative overflow-hidden"
+      className="flex flex-col items-center justify-start min-h-screen bg-white text-black px-4 md:px-12 lg:px-24 py-10 space-y-16"
     >
-      <motion.h1
-        variants={fadeIn}
-        initial="hidden"
-        animate="visible"
-        className="font-bold text-4xl text-center"
-      >
-        I have worked on numerous projects! Here are some noteworthy ones
-      </motion.h1>
+      {/* Work Experience Section */}
+      <section className="w-full max-w-6xl">
+        <motion.h2
+          variants={fadeIn}
+          initial="hidden"
+          animate="visible"
+          className="font-bold text-3xl sm:text-4xl text-center mb-8"
+        >
+          My Work Experience
+        </motion.h2>
 
-      <motion.div
-        variants={fadeIn}
-        initial="hidden"
-        animate="visible"
-        className="w-full flex flex-wrap justify-center gap-6 mt-10 border border-black p-6 rounded-3xl bg-gradient-to-br from-gray-50 to-gray-200 shadow-2xl"
-      >
+        <motion.div
+          variants={fadeIn}
+          initial="hidden"
+          animate="visible"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
+        >
+          {companies.map((company, index) => (
+            <CompanyCard key={index} company={company} />
+          ))}
+        </motion.div>
+      </section>
+
+      {/* Projects Section */}
+      <section className="w-full max-w-6xl">
         <motion.h1
           variants={fadeIn}
-          className="font-bold text-start text-2xl w-full border-b border-black pb-2"
+          initial="hidden"
+          animate="visible"
+          className="font-bold text-3xl sm:text-4xl text-center mb-8"
         >
-          Current Projects / Gigs
+          I have worked on numerous projects! Here are some noteworthy ones
         </motion.h1>
-        <motion.div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+
+        <motion.div
+          variants={fadeIn}
+          initial="hidden"
+          animate="visible"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 border border-black p-6 rounded-3xl bg-gradient-to-br from-gray-50 to-gray-200 shadow-2xl"
+        >
           {projects.map((project, index) => (
             <ProjectCard key={index} project={project} />
           ))}
         </motion.div>
-      </motion.div>
+      </section>
 
-      <motion.div variants={fadeIn} className="w-full mt-10 text-center">
-        <motion.h1
-          variants={fadeIn}
-          className="font-bold text-xl border-b border-black pb-2"
-        >
-          If you prefer to check my GitHub
-        </motion.h1>
+      {/* GitHub CTA */}
+      <motion.div
+        variants={fadeIn}
+        initial="hidden"
+        animate="visible"
+        className="pt-6"
+      >
         <motion.a
           href="https://github.com/karivarkey"
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-block mt-4 px-6 py-3 text-lg font-semibold bg-black text-white rounded-full shadow-lg transition-all duration-500 hover:bg-gray-900 hover:scale-105"
+          className="inline-block px-8 py-4 text-lg font-semibold bg-black text-white rounded-full shadow-lg transition-all duration-500 hover:bg-gray-900 hover:scale-105"
         >
           Visit My GitHub
         </motion.a>
