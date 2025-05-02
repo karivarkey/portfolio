@@ -29,16 +29,6 @@
   },
   "projects": [
     {
-      "name": "AIDE DHS",
-      "description": "Working on turning the startups idea into a reality",
-      "link": "http://aidedhs.ca/",
-      "image": "aide.png",
-      "date": {
-        "from": "December 2024",
-        "to": "Present"
-      }
-    },
-    {
       "name": "RSET LABS",
       "description": "A digital platform for the students of Rajagiri School of Engineering and Technology to subimt their Physics Lab reports for S1 & 2",
       "link": "https://rsetlab.web.app/",
@@ -72,15 +62,22 @@
   ],
   "companies": [
     {
-      "name": "μLearn",
-      "role": "Front-End Intern",
+      "name": "Aide DHS",
+      "role": "Technical Developer",
       "duration": {
-        "duration": "3 Mothns",
-        "from": "June 2024",
-        "to": "September 2024"
+        "duration": "On Goining",
+        "from": "November 2024",
+        "to": "Present"
       },
-      "technologies": ["React", "Tailwind"],
-      "website": "https://mulearn.org/"
+      "technologies": [
+        "React",
+        "Tailwind",
+        "React Native",
+        "BunJS",
+        "Elysia",
+        "Docker"
+      ],
+      "website": "https://aidedhs.ca/"
     },
     {
       "name": "Banzan Studios",
@@ -92,6 +89,17 @@
       },
       "technologies": ["React", "Tailwind", "React Native"],
       "website": "https://banzan.co/"
+    },
+    {
+      "name": "μLearn",
+      "role": "Front-End Intern",
+      "duration": {
+        "duration": "3 Mothns",
+        "from": "June 2024",
+        "to": "September 2024"
+      },
+      "technologies": ["React", "Tailwind"],
+      "website": "https://mulearn.org/"
     }
   ]
 }
