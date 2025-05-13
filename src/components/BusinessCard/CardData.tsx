@@ -28,7 +28,7 @@ const ContactSection = () => {
     {
       icon: FaLinkedin,
       text: "LinkedIn",
-      link: `https://linkedin.com/in/${card.contact.linkedIn}`,
+      link: `https://www.linkedin.com/in/geevarghese-regi-658531214/`,
     },
     {
       icon: FaInstagram,

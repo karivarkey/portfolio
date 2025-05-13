@@ -6,7 +6,7 @@ const contacts = [
   { id: "github", url: "https://github.com/karivarkey", icon: FaGithub },
   {
     id: "linkedin",
-    url: "https://www.linkedin.com/in/geevarghese-regi-7b7b3b1b4",
+    url: "https://www.linkedin.com/in/geevarghese-regi-658531214/",
     icon: FaLinkedin,
   },
   {
