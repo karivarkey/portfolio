@@ -19,7 +19,7 @@ const Projects = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 1 }}
-      className="flex flex-col items-center justify-start min-h-screen bg-white text-black px-4 md:px-12 lg:px-24 py-10 space-y-16"
+      className="flex flex-col items-center justify-start min-h-screen bg-white text-black px-4 md:px-12 lg:px-24 py-10 space-y-16 scroll-auto"
     >
       {/* Work Experience Section */}
       <section className="w-full max-w-6xl">
