@@ -11,6 +11,7 @@ const About = () => {
         {/* Left - Profile Picture */}
         <div className="relative flex-shrink-0 w-48 h-48 md:w-60 md:h-60 rounded-full overflow-hidden border-4 border-gray-300 shadow-lg">
           <img
+            rel="prefetch"
             src={profilePic}
             alt="Geevarghese Regi"
             className="w-full h-full object-cover relative top-3"
