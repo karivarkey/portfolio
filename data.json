@@ -1,5 +1,70 @@
 {
   "name": "Geevarghese Regi",
+  "username": "karivarkey",
+  "resume": {
+    "url": "/resume.pdf",
+    "filename": "Geevarghese_Resume.pdf",
+    "label": "Download Resume"
+  },
+  "home": {
+    "learnMoreLabel": "Learn More About Me",
+    "learnMoreUrl": "/about"
+  },
+  "aboutPage": {
+    "profileAlt": "Geevarghese Regi",
+    "heading": "Geevarghese Regi 🚀",
+    "intro": [
+      { "text": "Hey there! I'm " },
+      { "text": "Geevarghese", "bold": true },
+      { "text": " (aka " },
+      { "text": "Gee", "bold": true },
+      { "text": " or " },
+      { "text": "karivarkey", "bold": true },
+      { "text": ") 👋, a full-stack developer with a passion for " },
+      { "text": "building innovative apps", "bold": true },
+      { "text": " and " },
+      { "text": "AI-driven projects", "bold": true },
+      { "text": ". I love experimenting with " },
+      { "text": "React, TypeScript, MongoDB", "bold": true },
+      { "text": ", and " },
+      { "text": "AI/ML models", "bold": true },
+      { "text": " 🤖. Always on a journey to " },
+      {
+        "text": "learn, build, and break things to understand them better!",
+        "bold": true
+      },
+      { "text": " 🔥" }
+    ],
+    "currentRole": "Freelance Technical Developer @ AIDE DHS",
+    "roles": [
+      "Full-Stack Developer 🖥️",
+      "React Native & Expo Expert 📱",
+      "AI/ML Enthusiast 🤖",
+      "Firebase & Firestore Wizard 🔥",
+      "Linux & Arch User 🐧",
+      "Cloud & Backend Dev ☁️"
+    ],
+    "bioInfo": [
+      { "label": "📍 Location:", "value": "India 🇮🇳" },
+      { "label": "🎓 Education:", "value": "3rd-year CSE undergrad 📚" },
+      {
+        "label": "📜 Degree:",
+        "value": "B.Tech in Computer Science & Engineering 💻"
+      },
+      { "label": "🎓 Graduation:", "value": "2026 🎯" },
+      { "label": "🏢 Company:", "value": "Freelancer 🌍" }
+    ]
+  },
+  "projectsSection": {
+    "workHeading": "My Work Experience",
+    "projectsHeading": "I have worked on numerous projects! Here are some noteworthy ones",
+    "githubCtaLabel": "Visit My GitHub",
+    "githubUrl": "https://github.com/karivarkey"
+  },
+  "contactPage": {
+    "headline": "Let's Connect",
+    "subhead": "Find me on these platforms:"
+  },
   "title": [
     "DevOps Engineer",
     "Web Developer",
@@ -14,8 +79,8 @@
       "subText": "I use React Native , React and Firebase with Express to get my things done"
     },
     "bio": {
-      "company": "Aide DHS,Canada",
-      "location": "Remote",
+      "company": "FoodHub",
+      "location": "Chenai",
       "education": "Rajagiri School of Engineering and Technology",
       "degree": "B.Tech in Computer Science and Engineering",
       "graduation": "2026"
@@ -23,8 +88,11 @@
     "contact": {
       "email": "geevargheseregi78@gmail.com",
       "github": "karivarkey",
+      "githubUrl": "https://github.com/karivarkey",
       "linkedIn": "/in/geevarghese-regi-658531214",
-      "instagram": "karivarkey"
+      "linkedInUrl": "https://www.linkedin.com/in/geevarghese-regi-658531214/",
+      "instagram": "karivarkey",
+      "instagramUrl": "https://www.instagram.com/karivarkey/"
     }
   },
   "projects": [

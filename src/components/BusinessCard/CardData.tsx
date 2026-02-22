@@ -1,4 +1,4 @@
-import { card } from "./../../../data.json";
+import data from "./../../../data.json";
 import { motion } from "framer-motion";
 import { FaGithub, FaLinkedin, FaInstagram, FaEnvelope } from "react-icons/fa";
 
@@ -12,6 +12,8 @@ const fadeInScale = {
   exit: { opacity: 0, scale: 0.95, transition: { duration: 0.3 } },
 };
 
+const { card } = data;
+
 const ContactSection = () => {
   const contactLinks = [
     {
@@ -23,17 +25,17 @@ const ContactSection = () => {
     {
       icon: FaGithub,
       text: "GitHub",
-      link: `https://github.com/${card.contact.github}`,
+      link: card.contact.githubUrl,
     },
     {
       icon: FaLinkedin,
       text: "LinkedIn",
-      link: `https://www.linkedin.com/in/geevarghese-regi-658531214/`,
+      link: card.contact.linkedInUrl,
     },
     {
       icon: FaInstagram,
       text: "Instagram",
-      link: `https://instagram.com/${card.contact.instagram}`,
+      link: card.contact.instagramUrl,
     },
   ];
 

@@ -1,5 +1,6 @@
 import { useLocation, Link } from "react-router-dom";
 import { useState } from "react";
+import data from "./../../../data.json";
 
 const Header = () => {
   const location = useLocation();
@@ -15,8 +16,10 @@ const Header = () => {
     <div className="w-full flex justify-between items-center p-6 bg-white shadow-md">
       {/* Left Side - Name */}
       <div>
-        <div className="font-bold text-xl">Geevarghese Regi</div>
-        <div className="font-semibold text-sm text-[#797979]">karivarkey</div>
+        <div className="font-bold text-xl">{data.name}</div>
+        <div className="font-semibold text-sm text-[#797979]">
+          {data.username}
+        </div>
       </div>
 
       {/* Navigation */}

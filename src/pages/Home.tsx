@@ -57,15 +57,15 @@ const Home = () => {
                 backdrop-blur-lg transition-all duration-500 ease-in-out transform
                 hover:scale-105 hover:bg-gray-800 active:scale-95"
               style={{ animation: "fadeInUp 0.8s ease-out" }}
-              onClick={() => window.open("/about", "_self")} // Redirect to About Page
+              onClick={() => window.open(data.home.learnMoreUrl, "_self")} // Redirect to About Page
             >
-              Learn More About Me
+              {data.home.learnMoreLabel}
             </button>
 
             {/* Download Resume Button */}
             <a
-              href="/resume.pdf"
-              download="Geevarghese_Resume.pdf"
+              href={data.resume.url}
+              download={data.resume.filename}
               className="relative px-6 py-3 text-lg font-semibold uppercase border-2 border-black text-black 
                 rounded-full overflow-hidden transition-all duration-500 hover:text-white hover:border-white
                 before:absolute before:top-0 before:left-0 before:w-full before:h-full before:bg-black
@@ -73,7 +73,7 @@ const Home = () => {
                 hover:before:scale-x-100"
               style={{ animation: "fadeInUp 1s ease-out" }}
             >
-              <span className="relative z-10">Download Resume</span>
+              <span className="relative z-10">{data.resume.label}</span>
             </a>
           </div>
         </div>

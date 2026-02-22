@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { motion } from "framer-motion";
 import ProjectCard from "../components/Project/ProjectCard";
 import CompanyCard from "../components/Project/CompanyCard";
-import { projects, companies } from "./../../data.json";
+import data from "./../../data.json";
 
 const fadeIn = {
   hidden: { opacity: 0, y: 20 },
@@ -10,6 +10,8 @@ const fadeIn = {
 };
 
 const Projects = () => {
+  const { projects, companies, projectsSection } = data;
+
   useEffect(() => {
     document.body.style.overflowX = "hidden";
   }, []);
@@ -29,7 +31,7 @@ const Projects = () => {
           animate="visible"
           className="font-bold text-3xl sm:text-4xl text-center mb-8"
         >
-          My Work Experience
+          {projectsSection.workHeading}
         </motion.h2>
 
         <motion.div
@@ -52,7 +54,7 @@ const Projects = () => {
           animate="visible"
           className="font-bold text-3xl sm:text-4xl text-center mb-8"
         >
-          I have worked on numerous projects! Here are some noteworthy ones
+          {projectsSection.projectsHeading}
         </motion.h1>
 
         <motion.div
@@ -75,12 +77,12 @@ const Projects = () => {
         className="pt-6"
       >
         <motion.a
-          href="https://github.com/karivarkey"
+          href={projectsSection.githubUrl}
           target="_blank"
           rel="noopener noreferrer"
           className="inline-block px-8 py-4 text-lg font-semibold bg-black text-white rounded-full shadow-lg transition-all duration-500 hover:bg-gray-900 hover:scale-105"
         >
-          Visit My GitHub
+          {projectsSection.githubCtaLabel}
         </motion.a>
       </motion.div>
     </motion.div>

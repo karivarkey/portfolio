@@ -1,19 +1,12 @@
 import { useEffect, useState } from "react";
 import { FaGithub, FaLinkedin, FaInstagram } from "react-icons/fa";
 import Laptop from "./../assets/svg/Connect/Laptop.svg";
+import data from "./../../data.json";
 
 const contacts = [
-  { id: "github", url: "https://github.com/karivarkey", icon: FaGithub },
-  {
-    id: "linkedin",
-    url: "https://www.linkedin.com/in/geevarghese-regi-658531214/",
-    icon: FaLinkedin,
-  },
-  {
-    id: "instagram",
-    url: "https://www.instagram.com/karivarkey/",
-    icon: FaInstagram,
-  },
+  { id: "github", url: data.card.contact.githubUrl, icon: FaGithub },
+  { id: "linkedin", url: data.card.contact.linkedInUrl, icon: FaLinkedin },
+  { id: "instagram", url: data.card.contact.instagramUrl, icon: FaInstagram },
 ];
 
 const Contact = () => {
@@ -53,14 +46,14 @@ const Contact = () => {
           animate ? "opacity-100" : ""
         }`}
       >
-        Let's Connect
+        {data.contactPage.headline}
       </h1>
       <p
         className={`text-gray-600 text-lg mb-8 opacity-0 transition-all duration-1000 delay-400 ${
           animate ? "opacity-100" : ""
         }`}
       >
-        Find me on these platforms:
+        {data.contactPage.subhead}
       </p>
 
       {/* Social Icons */}

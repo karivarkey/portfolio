@@ -4,6 +4,7 @@ import AnimatedText from "../components/AnimatedText/AnimatedText";
 import CardData from "../components/BusinessCard/CardData";
 import { useState } from "react";
 import { Download } from "lucide-react";
+import data from "./../../data.json";
 
 const Card = () => {
   const [menu, setMenu] = useState<"About" | "Bio" | "Contact">("About");
@@ -24,16 +25,16 @@ const Card = () => {
           <div className="bg-white rounded-xl p-2 w-40 h-40 flex items-center justify-center shadow-md">
             <img src={Me} alt="Me" className="w-36 h-36" />
           </div>
-          <div className="text-lg font-semibold mt-2">Geevarghese Regi</div>
+          <div className="text-lg font-semibold mt-2">{data.name}</div>
           <AnimatedText />
 
           {/* Download Resume Button */}
           <a
-            href="/resume.pdf"
-            download="Geevarghese_Resume.pdf"
+            href={data.resume.url}
+            download={data.resume.filename}
             className="mt-4 flex items-center gap-2 bg-gradient-to-r from-blue-500 to-indigo-600 text-white px-6 py-2 rounded-lg shadow-md hover:scale-105 transition-transform"
           >
-            <Download className="w-5 h-5" /> Download Resume
+            <Download className="w-5 h-5" /> {data.resume.label}
           </a>
 
           {/* Menu Section */}

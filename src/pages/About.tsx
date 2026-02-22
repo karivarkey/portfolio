@@ -1,6 +1,9 @@
 import profilePic from "./../assets/svg/About/me_wave.svg";
+import data from "./../../data.json";
 
 const About = () => {
+  const { aboutPage } = data;
+
   return (
     <div
       className="flex flex-col items-center justify-center bg-gray-50 text-gray-900 p-6"
@@ -13,7 +16,7 @@ const About = () => {
           <img
             rel="prefetch"
             src={profilePic}
-            alt="Geevarghese Regi"
+            alt={aboutPage.profileAlt}
             className="w-full h-full object-cover relative top-3"
           />
         </div>
@@ -21,21 +24,21 @@ const About = () => {
         {/* Right - Info Section */}
         <div className="flex-1 flex flex-col justify-center px-6 mt-6 md:mt-0">
           <h1 className="text-3xl font-bold text-gray-900">
-            Geevarghese Regi 🚀
+            {aboutPage.heading}
           </h1>
 
           <p className="text-lg text-gray-600 mt-2">
-            Hey there! I'm <b>Geevarghese</b> (aka <b>Gee</b> or{" "}
-            <b>karivarkey</b>) 👋, a full-stack developer with a passion for
-            <b> building innovative apps</b> and <b>AI-driven projects</b>. I
-            love experimenting with <b>React, TypeScript, MongoDB</b>, and{" "}
-            <b>AI/ML models</b> 🤖. Always on a journey to{" "}
-            <b>learn, build, and break things to understand them better!</b> 🔥
+            {aboutPage.intro.map((part, index) =>
+              part.bold ? (
+                <b key={index}>{part.text}</b>
+              ) : (
+                <span key={index}>{part.text}</span>
+              ),
+            )}
           </p>
 
           <p className="text-md text-gray-500 mt-3">
-            Currently working as a{" "}
-            <b>Freelance Technical Developer @ AIDE DHS</b>
+            Currently working as a <b>{aboutPage.currentRole}</b>
           </p>
 
           {/* Titles / Roles */}
@@ -44,14 +47,7 @@ const About = () => {
               Roles & Skills 🎯
             </h3>
             <div className="flex flex-wrap gap-2 mt-2">
-              {[
-                "Full-Stack Developer 🖥️",
-                "React Native & Expo Expert 📱",
-                "AI/ML Enthusiast 🤖",
-                "Firebase & Firestore Wizard 🔥",
-                "Linux & Arch User 🐧",
-                "Cloud & Backend Dev ☁️",
-              ].map((role, index) => (
+              {aboutPage.roles.map((role, index) => (
                 <span
                   key={index}
                   className="px-3 py-1 bg-gray-200 text-gray-700 text-sm rounded-full"
@@ -64,21 +60,11 @@ const About = () => {
 
           {/* Bio Info */}
           <div className="mt-5 text-gray-700">
-            <p>
-              <b>📍 Location:</b> India 🇮🇳
-            </p>
-            <p>
-              <b>🎓 Education:</b> 3rd-year CSE undergrad 📚
-            </p>
-            <p>
-              <b>📜 Degree:</b> B.Tech in Computer Science & Engineering 💻
-            </p>
-            <p>
-              <b>🎓 Graduation:</b> 2026 🎯
-            </p>
-            <p>
-              <b>🏢 Company:</b> Freelancer 🌍
-            </p>
+            {aboutPage.bioInfo.map((item, index) => (
+              <p key={index}>
+                <b>{item.label}</b> {item.value}
+              </p>
+            ))}
           </div>
         </div>
       </div>
