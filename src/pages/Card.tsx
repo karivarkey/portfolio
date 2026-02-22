@@ -37,7 +37,7 @@ const Card = () => {
           </a>
 
           {/* Menu Section */}
-          <div className="w-3/4 mt-6">
+          <div className="mt-6">
             <div className="relative flex justify-between items-center">
               {["About", "Bio", "Contact"].map((item) => (
                 <div
