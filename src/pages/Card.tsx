@@ -1,66 +1,64 @@
-import Background from "./../assets/svg/Card/gradient.svg";
 import Me from "./../assets/svg/Card/me.svg";
-import AnimatedText from "../components/AnimatedText/AnimatedText";
 import CardData from "../components/BusinessCard/CardData";
 import { useState } from "react";
-import { Download } from "lucide-react";
 import data from "./../../data.json";
 
 const Card = () => {
   const [menu, setMenu] = useState<"About" | "Bio" | "Contact">("About");
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen bg-[#EEEEEE]">
-      {/* Card Container */}
-      <div className="relative flex flex-col w-5/6 rounded-t-3xl px-6 pt-6 text-black font-semibold overflow-hidden">
-        {/* Background Layer */}
-        <div
-          className="absolute inset-0 bg-[conic-gradient(white_0deg_10deg,green_80deg_120deg,white_130deg_140deg,pink_200deg_240deg,white_250deg_260deg,blue_300deg_360deg)] bg-cover bg-center"
-          style={{ backgroundImage: `url(${Background})` }}
-        ></div>
-
-        {/* Content Layer */}
-        <div className="relative z-10 flex flex-col items-center justify-center">
-          {/* Avatar Section */}
-          <div className="bg-white rounded-xl p-2 w-40 h-40 flex items-center justify-center shadow-md">
-            <img src={Me} alt="Me" className="w-36 h-36" />
+    <div className="min-h-screen bg-white text-neutral-900 flex flex-col items-center justify-center px-6">
+      {/* Card Wrapper */}
+      <div className="w-full max-w-md border border-neutral-200 rounded-2xl">
+        {/* Top Section */}
+        <div className="p-8 text-center">
+          {/* Avatar */}
+          <div className="w-28 h-28 mx-auto rounded-xl bg-neutral-100 flex items-center justify-center">
+            <img src={Me} alt="Profile" className="w-24 h-24 object-contain" />
           </div>
-          <div className="text-lg font-semibold mt-2">{data.name}</div>
-          <AnimatedText />
 
-          {/* Download Resume Button */}
+          {/* Name */}
+          <h1 className="mt-6 text-2xl font-semibold tracking-tight">
+            {data.name}
+          </h1>
+
+          {/* Role */}
+          <p className="mt-2 text-neutral-500 text-sm uppercase tracking-widest">
+            Full Stack Engineer
+          </p>
+
+          {/* Resume Link */}
           <a
             href={data.resume.url}
             download={data.resume.filename}
-            className="mt-4 flex items-center gap-2 bg-gradient-to-r from-blue-500 to-indigo-600 text-white px-6 py-2 rounded-lg shadow-md hover:scale-105 transition-transform"
+            className="mt-6 inline-block text-sm underline underline-offset-4 hover:opacity-70 transition"
           >
-            <Download className="w-5 h-5" /> {data.resume.label}
+            {data.resume.label}
           </a>
-
-          {/* Menu Section */}
-          <div className="mt-6">
-            <div className="relative flex justify-between items-center">
-              {["About", "Bio", "Contact"].map((item) => (
-                <div
-                  key={item}
-                  className={`relative px-6 py-2 -bottom-1 cursor-pointer transition-all ${
-                    menu === item
-                      ? "bg-white shadow-md rounded-md text-black font-bold"
-                      : "text-gray-400"
-                  }`}
-                  onClick={() => setMenu(item as "About" | "Bio" | "Contact")}
-                >
-                  <span className="relative z-10">{item}</span>
-                </div>
-              ))}
-            </div>
-          </div>
         </div>
-      </div>
 
-      {/* Bottom Section */}
-      <div className="bg-white w-5/6 flex items-center justify-center rounded-b-3xl py-6">
-        <CardData menu={menu} />
+        {/* Divider */}
+        <div className="border-t border-neutral-200" />
+
+        {/* Tabs */}
+        <div className="flex justify-around text-sm uppercase tracking-widest py-4">
+          {["About", "Bio", "Contact"].map((item) => (
+            <button
+              key={item}
+              onClick={() => setMenu(item as "About" | "Bio" | "Contact")}
+              className={`transition ${
+                menu === item ? "text-black" : "text-neutral-400"
+              }`}
+            >
+              {item}
+            </button>
+          ))}
+        </div>
+
+        {/* Content */}
+        <div className="border-t border-neutral-200 p-6 text-sm text-neutral-600 leading-relaxed">
+          <CardData menu={menu} />
+        </div>
       </div>
     </div>
   );

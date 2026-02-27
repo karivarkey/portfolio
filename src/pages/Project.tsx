@@ -1,91 +1,108 @@
-import { useEffect } from "react";
-import { motion } from "framer-motion";
-import ProjectCard from "../components/Project/ProjectCard";
-import CompanyCard from "../components/Project/CompanyCard";
 import data from "./../../data.json";
-
-const fadeIn = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
-};
 
 const Projects = () => {
   const { projects, companies, projectsSection } = data;
 
-  useEffect(() => {
-    document.body.style.overflowX = "hidden";
-  }, []);
-
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 1 }}
-      className="flex flex-col items-center justify-start min-h-screen bg-white text-black px-4 md:px-12 lg:px-24 py-10 space-y-16 scroll-auto"
-    >
-      {/* Work Experience Section */}
-      <section className="w-full max-w-6xl">
-        <motion.h2
-          variants={fadeIn}
-          initial="hidden"
-          animate="visible"
-          className="font-bold text-3xl sm:text-4xl text-center mb-8"
-        >
-          {projectsSection.workHeading}
-        </motion.h2>
+    <div className="min-h-screen bg-white text-neutral-900 px-6 md:px-16 py-24">
+      <div className="max-w-6xl mx-auto space-y-28">
+        {/* EXPERIENCE */}
+        <section>
+          <h2 className="text-4xl md:text-5xl font-semibold tracking-tight mb-16">
+            {projectsSection.workHeading}
+          </h2>
 
-        <motion.div
-          variants={fadeIn}
-          initial="hidden"
-          animate="visible"
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
-        >
-          {companies.map((company, index) => (
-            <CompanyCard key={index} company={company} />
-          ))}
-        </motion.div>
-      </section>
+          <div className="space-y-16">
+            {companies.map((company, index) => (
+              <div key={index} className="grid md:grid-cols-[180px_1fr] gap-8">
+                {/* Date Column */}
+                <div className="text-sm text-neutral-400 uppercase tracking-wider">
+                  {company.duration.from} — {company.duration.to}
+                </div>
 
-      {/* Projects Section */}
-      <section className="w-full max-w-6xl">
-        <motion.h1
-          variants={fadeIn}
-          initial="hidden"
-          animate="visible"
-          className="font-bold text-3xl sm:text-4xl text-center mb-8"
-        >
-          {projectsSection.projectsHeading}
-        </motion.h1>
+                {/* Content */}
+                <div>
+                  <h3 className="text-2xl font-medium">{company.name}</h3>
+                  <p className="text-neutral-500 mt-1">{company.role}</p>
 
-        <motion.div
-          variants={fadeIn}
-          initial="hidden"
-          animate="visible"
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 border border-black p-6 rounded-3xl bg-gradient-to-br from-gray-50 to-gray-200 shadow-2xl"
-        >
-          {projects.map((project, index) => (
-            <ProjectCard key={index} project={project} />
-          ))}
-        </motion.div>
-      </section>
+                  <div className="flex flex-wrap gap-4 mt-4 text-sm text-neutral-600">
+                    {company.technologies.map((tech, i) => (
+                      <span key={i}>{tech}</span>
+                    ))}
+                  </div>
 
-      {/* GitHub CTA */}
-      <motion.div
-        variants={fadeIn}
-        initial="hidden"
-        animate="visible"
-        className="pt-6"
-      >
-        <motion.a
-          href={projectsSection.githubUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-block px-8 py-4 text-lg font-semibold bg-black text-white rounded-full shadow-lg transition-all duration-500 hover:bg-gray-900 hover:scale-105"
-        >
-          {projectsSection.githubCtaLabel}
-        </motion.a>
-      </motion.div>
-    </motion.div>
+                  {company.website && (
+                    <a
+                      href={company.website}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-block mt-4 text-sm text-black underline underline-offset-4"
+                    >
+                      Visit Website
+                    </a>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* PROJECTS */}
+        <section>
+          <h2 className="text-4xl md:text-5xl font-semibold tracking-tight mb-16">
+            Selected Projects
+          </h2>
+
+          <div className="grid md:grid-cols-2 gap-16">
+            {projects.map((project, index) => (
+              <a
+                key={index}
+                href={project.link || "#"}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group block"
+              >
+                {/* Image */}
+                <div className="aspect-[4/3] bg-neutral-100 rounded-2xl overflow-hidden flex items-center justify-center p-8">
+                  <img
+                    src={`/Projects/${project.image}`}
+                    alt={project.name}
+                    className="max-h-full max-w-full object-contain transition duration-700 group-hover:scale-105"
+                  />
+                </div>
+
+                {/* Text */}
+                <h3 className="text-xl font-medium group-hover:underline underline-offset-4">
+                  {project.name}
+                </h3>
+
+                <p className="mt-3 text-neutral-600 leading-relaxed">
+                  {project.description}
+                </p>
+
+                {project.date && (
+                  <p className="mt-3 text-sm text-neutral-400">
+                    {project.date.from} — {project.date.to}
+                  </p>
+                )}
+              </a>
+            ))}
+          </div>
+        </section>
+
+        {/* CTA */}
+        <section className="pt-12">
+          <a
+            href={projectsSection.githubUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-lg font-medium underline underline-offset-8"
+          >
+            {projectsSection.githubCtaLabel}
+          </a>
+        </section>
+      </div>
+    </div>
   );
 };
 

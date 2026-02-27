@@ -1,15 +1,15 @@
 import data from "./../../../data.json";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { FaGithub, FaLinkedin, FaInstagram, FaEnvelope } from "react-icons/fa";
 
 type Props = {
   menu: "About" | "Bio" | "Contact";
 };
 
-const fadeInScale = {
-  hidden: { opacity: 0, scale: 0.95 },
-  visible: { opacity: 1, scale: 1, transition: { duration: 0.4 } },
-  exit: { opacity: 0, scale: 0.95, transition: { duration: 0.3 } },
+const fadeIn = {
+  hidden: { opacity: 0, y: 8 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.25 } },
+  exit: { opacity: 0, y: -8, transition: { duration: 0.2 } },
 };
 
 const { card } = data;
@@ -20,7 +20,6 @@ const ContactSection = () => {
       icon: FaEnvelope,
       text: card.contact.email,
       link: `mailto:${card.contact.email}`,
-      copy: true,
     },
     {
       icon: FaGithub,
@@ -39,82 +38,72 @@ const ContactSection = () => {
     },
   ];
 
-  const copyToClipboard = (text: string) => {
-    navigator.clipboard.writeText(text);
-    alert("Copied to clipboard!");
-  };
-
   return (
-    <motion.div
-      initial="hidden"
-      animate="visible"
-      exit="exit"
-      variants={fadeInScale}
-      className="flex flex-col items-center gap-6 w-full"
-    >
-      <h2 className="text-xl font-semibold text-gray-900">Let's Connect! 🤝</h2>
-      <div className="grid grid-cols-2 gap-4 w-full max-w-sm">
-        {contactLinks.map((contact, index) => (
-          <motion.div
-            key={index}
-            whileHover={{ scale: 1.08 }}
-            className="flex items-center gap-4 bg-white border border-gray-300 shadow-sm rounded-xl p-4 cursor-pointer transition-all hover:shadow-md hover:border-gray-400"
-            onClick={() =>
-              contact.copy
-                ? copyToClipboard(contact.text)
-                : window.open(contact.link, "_blank")
-            }
-          >
-            <contact.icon className="text-xl text-gray-700" />
-            <span
-              className="text-sm font-medium text-gray-700 truncate w-28"
-              title={contact.text}
-            >
+    <div className="space-y-6">
+      {contactLinks.map((contact, index) => (
+        <a
+          key={index}
+          href={contact.link}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group flex items-center justify-between text-sm"
+        >
+          <div className="flex items-center gap-4">
+            <contact.icon className="text-neutral-400 group-hover:text-black transition" />
+            <span className="group-hover:underline underline-offset-4">
               {contact.text}
             </span>
-          </motion.div>
-        ))}
-      </div>
-    </motion.div>
+          </div>
+          <span className="text-neutral-400 group-hover:text-black transition">
+            →
+          </span>
+        </a>
+      ))}
+    </div>
   );
 };
 
 const CardData = ({ menu }: Props) => {
   return (
-    <div className="px-6 w-full">
-      <motion.div
-        key={menu}
-        initial="hidden"
-        animate="visible"
-        exit="exit"
-        variants={fadeInScale}
-      >
-        {menu === "About" && (
-          <div className="text-start">
-            <p className="text-base font-semibold text-gray-900">
-              {card.about.text}
-            </p>
-            <p className="text-sm text-gray-600 pt-3">{card.about.subText}</p>
-          </div>
-        )}
-        {menu === "Bio" && (
-          <div className="flex flex-col gap-4">
-            <div className="bg-white border border-gray-300 rounded-xl p-4 shadow-sm flex flex-col gap-2">
-              <p className="text-base font-medium text-gray-900">
-                {card.bio.company}
-              </p>
-              <p className="text-sm text-gray-600">{card.bio.location}</p>
+    <div className="w-full text-neutral-700">
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={menu}
+          variants={fadeIn}
+          initial="hidden"
+          animate="visible"
+          exit="exit"
+        >
+          {menu === "About" && (
+            <div className="space-y-4 text-sm leading-relaxed">
+              <p className="font-medium text-neutral-900">{card.about.text}</p>
+              <p>{card.about.subText}</p>
             </div>
-            <div className="bg-white border border-gray-300 rounded-xl p-4 shadow-sm flex flex-col gap-2">
-              <p className="text-base font-medium text-gray-900">
-                {card.bio.degree}
-              </p>
-              <p className="text-sm text-gray-600">{card.bio.education}</p>
+          )}
+
+          {menu === "Bio" && (
+            <div className="space-y-6 text-sm">
+              <div>
+                <p className="text-neutral-400 uppercase tracking-widest text-xs">
+                  Company
+                </p>
+                <p className="mt-1">{card.bio.company}</p>
+                <p className="text-neutral-500">{card.bio.location}</p>
+              </div>
+
+              <div>
+                <p className="text-neutral-400 uppercase tracking-widest text-xs">
+                  Education
+                </p>
+                <p className="mt-1">{card.bio.degree}</p>
+                <p className="text-neutral-500">{card.bio.education}</p>
+              </div>
             </div>
-          </div>
-        )}
-        {menu === "Contact" && <ContactSection />}
-      </motion.div>
+          )}
+
+          {menu === "Contact" && <ContactSection />}
+        </motion.div>
+      </AnimatePresence>
     </div>
   );
 };

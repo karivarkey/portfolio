@@ -1,125 +1,67 @@
-import { useEffect, useState } from "react";
-import bg from "./../assets/images/Home/bg.svg";
 import data from "./../../data.json";
-
+import profile from "./../assets/svg/About/me_wave.svg";
+import { useNavigate } from "react-router-dom";
 const Home = () => {
-  const [animateImage, setAnimateImage] = useState(false);
-  const [tilt, setTilt] = useState({ x: 0, y: 0 });
-  const [imageLoaded, setImageLoaded] = useState(false);
+  const navigate = useNavigate();
 
-  useEffect(() => {
-    setTimeout(() => setAnimateImage(true), 300); // Delayed for smooth fade-in
-  }, []);
-
-  // Handle Mouse Movement for 3D Parallax Effect
-  const handleMouseMove = (e: any) => {
-    const { clientX, clientY } = e;
-    const centerX = window.innerWidth / 2;
-    const centerY = window.innerHeight / 2;
-
-    // Calculate tilt based on cursor position
-    const xTilt = ((clientX - centerX) / centerX) * 20; // Adjust sensitivity
-    const yTilt = ((clientY - centerY) / centerY) * -20; // Negative for correct tilt
-
-    setTilt({ x: xTilt, y: yTilt });
+  const handler = {
+    navigateToAbout: () => {
+      navigate("/about");
+    },
   };
-
   return (
-    <div
-      className="flex flex-1 justify-around items-center px-20 relative"
-      style={{ height: "calc(100vh - 80px)" }}
-      onMouseMove={handleMouseMove} // Track mouse movement
+    <section
+      className="bg-white text-neutral-900 px-6 md:px-16 flex items-center justify-center overflow-hidden"
+      style={{ minHeight: "calc(100vh - 60px)" }}
     >
-      {/* Left Section */}
-      <div className="flex-1 p-4 font-bold text-2xl">
-        <div className="text-start ">
-          <p className="font-semibold text-gray-900 text-2xl">
-            {data.card.about.text.split("\n").map((line, index) => (
-              <span key={index} className="block">
-                {line}
-              </span>
-            ))}
+      <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-20 items-center">
+        {/* LEFT — TEXT */}
+        <div>
+          <h1 className="text-5xl md:text-6xl font-semibold tracking-tight leading-tight">
+            {data.name}
+          </h1>
+
+          <p className="mt-6 text-xl text-neutral-500 max-w-xl leading-relaxed">
+            Full-stack engineer building intelligent systems and clean digital
+            products.
           </p>
 
-          <p className="text-lg text-gray-600 pt-3">
-            {data.card.about.subText.split("\n").map((line, index) => (
-              <span key={index} className="block">
-                {line}
-              </span>
-            ))}
+          <p className="mt-8 text-base text-neutral-600 max-w-xl leading-relaxed">
+            I design and build scalable applications across web and mobile.
+            Focused on clarity, performance, and thoughtful engineering.
           </p>
 
-          {/* Buttons Container - Side by Side */}
-          <div className="flex gap-4 mt-6">
-            {/* Learn More Button */}
-            <button
-              className="px-6 py-3 text-lg font-semibold text-white bg-black rounded-full shadow-lg
-                backdrop-blur-lg transition-all duration-500 ease-in-out transform
-                hover:scale-105 hover:bg-gray-800 active:scale-95"
-              style={{ animation: "fadeInUp 0.8s ease-out" }}
-              onClick={() => window.open(data.home.learnMoreUrl, "_self")} // Redirect to About Page
-            >
+          {/* Actions */}
+          <button
+            onClick={handler.navigateToAbout}
+            className="mt-12 flex gap-10 text-sm uppercase tracking-widest hover:cursor-pointer"
+          >
+            <div className="underline underline-offset-8 hover:opacity-70 transition">
               {data.home.learnMoreLabel}
-            </button>
+            </div>
 
-            {/* Download Resume Button */}
             <a
               href={data.resume.url}
               download={data.resume.filename}
-              className="relative px-6 py-3 text-lg font-semibold uppercase border-2 border-black text-black 
-                rounded-full overflow-hidden transition-all duration-500 hover:text-white hover:border-white
-                before:absolute before:top-0 before:left-0 before:w-full before:h-full before:bg-black
-                before:scale-x-0 before:origin-left before:transition-transform before:duration-500
-                hover:before:scale-x-100"
-              style={{ animation: "fadeInUp 1s ease-out" }}
+              className="underline underline-offset-8 hover:opacity-70 transition"
             >
-              <span className="relative z-10">{data.resume.label}</span>
+              {data.resume.label}
             </a>
+          </button>
+        </div>
+
+        {/* RIGHT — IMAGE */}
+        <div className="flex justify-center md:justify-end">
+          <div className="w-64 md:w-80 aspect-square bg-neutral-100 rounded-3xl flex items-center justify-center">
+            <img
+              src={profile}
+              alt="Profile"
+              className="w-3/4 h-3/4 object-contain"
+            />
           </div>
         </div>
       </div>
-
-      {/* Right Section - Image with Fade, Scale & 3D Parallax */}
-      <div className="flex justify-end flex-1 relative">
-        {!imageLoaded && (
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="w-16 h-16 border-4 border-gray-300 border-t-black rounded-full animate-spin"></div>
-          </div>
-        )}
-        <img
-          src={bg}
-          alt="bg"
-          className={`max-w-full h-auto transition-transform duration-1000 ease-out ${
-            imageLoaded ? "block" : "hidden"
-          }`}
-          onLoad={() => setImageLoaded(true)}
-          style={{
-            opacity: animateImage ? 1 : 0,
-            transform: `perspective(1000px) scale(${animateImage ? 1 : 0.75}) 
-                        rotateX(${tilt.y}deg) rotateY(${tilt.x}deg)`,
-            transition: animateImage
-              ? "opacity 1s ease-out, transform 1s ease-out"
-              : "none",
-          }}
-        />
-      </div>
-
-      {/* Keyframe Animations */}
-      <style>
-        {`
-          @keyframes fadeInUp {
-            from {
-              opacity: 0;
-              transform: translateY(20px);
-            }
-            to {
-              opacity: 1;
-              transform: translateY(0);
-            }
-          }
-        `}
-      </style>
-    </div>
+    </section>
   );
 };
 

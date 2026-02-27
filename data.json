@@ -12,47 +12,21 @@
   },
   "aboutPage": {
     "profileAlt": "Geevarghese Regi",
-    "heading": "Geevarghese Regi 🚀",
-    "intro": [
-      { "text": "Hey there! I'm " },
-      { "text": "Geevarghese", "bold": true },
-      { "text": " (aka " },
-      { "text": "Gee", "bold": true },
-      { "text": " or " },
-      { "text": "karivarkey", "bold": true },
-      { "text": ") 👋, a full-stack developer with a passion for " },
-      { "text": "building innovative apps", "bold": true },
-      { "text": " and " },
-      { "text": "AI-driven projects", "bold": true },
-      { "text": ". I love experimenting with " },
-      { "text": "React, TypeScript, MongoDB", "bold": true },
-      { "text": ", and " },
-      { "text": "AI/ML models", "bold": true },
-      { "text": " 🤖. Always on a journey to " },
-      {
-        "text": "learn, build, and break things to understand them better!",
-        "bold": true
-      },
-      { "text": " 🔥" }
-    ],
-    "currentRole": "Freelance Technical Developer @ AIDE DHS",
+    "heading": "Geevarghese Regi",
+    "tagline": "Full-stack developer building intelligent systems and clean digital products.",
+    "description": "I build scalable apps and AI-powered systems using React, TypeScript, MongoDB, and modern ML tooling. I care about performance, simplicity, and building things that actually matter. Currently working as an Intern at FoodHub while completing my B.Tech in Computer Science.",
     "roles": [
-      "Full-Stack Developer 🖥️",
-      "React Native & Expo Expert 📱",
-      "AI/ML Enthusiast 🤖",
-      "Firebase & Firestore Wizard 🔥",
-      "Linux & Arch User 🐧",
-      "Cloud & Backend Dev ☁️"
+      "Full-Stack Developer",
+      "AI/ML Engineer",
+      "React Native",
+      "Backend Systems",
+      "Cloud Architecture"
     ],
     "bioInfo": [
-      { "label": "📍 Location:", "value": "India 🇮🇳" },
-      { "label": "🎓 Education:", "value": "3rd-year CSE undergrad 📚" },
-      {
-        "label": "📜 Degree:",
-        "value": "B.Tech in Computer Science & Engineering 💻"
-      },
-      { "label": "🎓 Graduation:", "value": "2026 🎯" },
-      { "label": "🏢 Company:", "value": "Freelancer 🌍" }
+      { "label": "Location", "value": "India" },
+      { "label": "Degree", "value": "B.Tech CSE" },
+      { "label": "Graduation", "value": "2026" },
+      { "label": "Current Role", "value": "Intern @ FoodHub" }
     ]
   },
   "projectsSection": {

@@ -5,70 +5,69 @@ const About = () => {
   const { aboutPage } = data;
 
   return (
-    <div
-      className="flex flex-col items-center justify-center bg-gray-50 text-gray-900 p-6"
-      style={{ height: "calc(100vh - 80px)" }}
-    >
-      {/* Profile Card */}
-      <div className="max-w-4xl w-full bg-white shadow-lg rounded-3xl overflow-hidden flex flex-col md:flex-row p-6 md:p-10 transition-all duration-500 hover:shadow-2xl">
-        {/* Left - Profile Picture */}
-        <div className="relative flex-shrink-0 w-48 h-48 md:w-60 md:h-60 rounded-full overflow-hidden border-4 border-gray-300 shadow-lg">
-          <img
-            rel="prefetch"
-            src={profilePic}
-            alt={aboutPage.profileAlt}
-            className="w-full h-full object-cover relative top-3"
+    <main className="min-h-screen bg-white text-neutral-900 px-6 md:px-16 py-20">
+      <div className="max-w-5xl mx-auto grid md:grid-cols-[260px_1fr] gap-16 items-start">
+        {/* Profile Image */}
+        <div className="relative w-44 h-44 md:w-56 md:h-56 flex items-center justify-center">
+          {/* Pattern Background */}
+          <div
+            className="absolute inset-0 rounded-full"
+            style={{
+              backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23E8541A' fill-opacity='0.04'%3E%3Ccircle cx='7' cy='7' r='7'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+              backgroundSize: "60px 60px",
+            }}
           />
+
+          {/* Avatar */}
+          <div className="relative w-36 h-36 md:w-48 md:h-48 rounded-full overflow-hidden bg-white">
+            <img
+              src={profilePic}
+              alt={aboutPage.profileAlt}
+              className="w-full h-full object-cover"
+            />
+          </div>
         </div>
 
-        {/* Right - Info Section */}
-        <div className="flex-1 flex flex-col justify-center px-6 mt-6 md:mt-0">
-          <h1 className="text-3xl font-bold text-gray-900">
+        {/* Content */}
+        <div>
+          {/* Name */}
+          <h1 className="text-4xl md:text-6xl font-semibold tracking-tight leading-tight">
             {aboutPage.heading}
           </h1>
 
-          <p className="text-lg text-gray-600 mt-2">
-            {aboutPage.intro.map((part, index) =>
-              part.bold ? (
-                <b key={index}>{part.text}</b>
-              ) : (
-                <span key={index}>{part.text}</span>
-              ),
-            )}
+          {/* Subtitle */}
+          <p className="mt-4 text-lg md:text-xl text-neutral-500 max-w-2xl leading-relaxed">
+            {aboutPage.tagline}
           </p>
 
-          <p className="text-md text-gray-500 mt-3">
-            Currently working as a <b>{aboutPage.currentRole}</b>
+          {/* Intro Paragraph */}
+          <p className="mt-8 text-base md:text-lg text-neutral-700 leading-relaxed max-w-3xl">
+            {aboutPage.description}
           </p>
 
-          {/* Titles / Roles */}
-          <div className="mt-4">
-            <h3 className="text-lg font-semibold text-gray-800">
-              Roles & Skills 🎯
-            </h3>
-            <div className="flex flex-wrap gap-2 mt-2">
-              {aboutPage.roles.map((role, index) => (
-                <span
-                  key={index}
-                  className="px-3 py-1 bg-gray-200 text-gray-700 text-sm rounded-full"
-                >
-                  {role}
-                </span>
-              ))}
-            </div>
+          {/* Roles */}
+          <div className="mt-10 flex flex-wrap gap-6 text-sm uppercase tracking-widest text-neutral-500">
+            {aboutPage.roles.map((role, index) => (
+              <span key={index} className="border-b border-neutral-300 pb-1">
+                {role}
+              </span>
+            ))}
           </div>
 
-          {/* Bio Info */}
-          <div className="mt-5 text-gray-700">
+          {/* Metadata */}
+          <div className="mt-12 grid grid-cols-2 md:grid-cols-3 gap-y-6 text-sm text-neutral-600">
             {aboutPage.bioInfo.map((item, index) => (
-              <p key={index}>
-                <b>{item.label}</b> {item.value}
-              </p>
+              <div key={index}>
+                <p className="text-neutral-400 uppercase tracking-wider text-xs">
+                  {item.label}
+                </p>
+                <p className="mt-1">{item.value}</p>
+              </div>
             ))}
           </div>
         </div>
       </div>
-    </div>
+    </main>
   );
 };
 
